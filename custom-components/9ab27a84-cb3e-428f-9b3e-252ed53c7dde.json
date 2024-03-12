@@ -1,0 +1,37 @@
+{
+  "id": "9ab27a84-cb3e-428f-9b3e-252ed53c7dde",
+  "name": "Chain prompt",
+  "className": "PythonCoder",
+  "description": "adds instructions to a output text from previous LLM prompt",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Code",
+      "dataType": "CODE",
+      "value": "# inputs\ninstruction = '''{Instruction}'''\ninput_text = '''{input_text}'''\n\n# calculations\nprompt = instruction + '\\n\\n' + input_text\n\n\n# result\nresult = prompt",
+      "templateVariables": {
+        "Code.input_text": "The gene enrichment analysis revealed several significant findings. The top enriched gene functions include binding to phospholipase, non-membrane spanning protein tyrosine kinase activity, protein tyrosine kinase activity, kinase regulator activity, kinase binding, protein kinase binding, transmembrane signaling receptor activity, enzyme binding, molecular transducer activity, signaling receptor activity, identical protein binding, and protein binding. The intersection size for each function varied from 4 to 60, with the highest intersection size found for protein binding. Precision ranged from 0.07 to 0.98, with the highest precision observed for protein binding. Recall varied from 0.01 to 0.17, with the highest recall found for phospholipase binding. These findings suggest that the identified genes may play important roles in various cellular processes, such as signal transduction and enzyme catalysis.",
+        "Code.Instruction": "How does it relate to the breast cancer and Her2 positive BRCA patients?"
+      },
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "ANY",
+    "value": "How does it relate to the breast cancer and Her2 positive BRCA patients?\n\nThe gene enrichment analysis revealed several significant findings. The top enriched gene functions include binding to phospholipase, non-membrane spanning protein tyrosine kinase activity, protein tyrosine kinase activity, kinase regulator activity, kinase binding, protein kinase binding, transmembrane signaling receptor activity, enzyme binding, molecular transducer activity, signaling receptor activity, identical protein binding, and protein binding. The intersection size for each function varied from 4 to 60, with the highest intersection size found for protein binding. Precision ranged from 0.07 to 0.98, with the highest precision observed for protein binding. Recall varied from 0.01 to 0.17, with the highest recall found for phospholipase binding. These findings suggest that the identified genes may play important roles in various cellular processes, such as signal transduction and enzyme catalysis."
+  },
+  "label": "PYTHONCODER-10",
+  "configuration": {
+    "force_run": "false",
+    "openai_api_key": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

@@ -1,0 +1,34 @@
+{
+  "id": "1b17e5dc-4e54-4cc5-ac46-e6dbd7f1e636",
+  "name": "GO enrichment analysis",
+  "className": "PythonCoder",
+  "description": "Performs GO enrichment analysis for a list of genes",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Code",
+      "dataType": "CODE",
+      "value": "import pandas as pd\r\nimport requests\r\nimport json\r\nimport os\r\n\r\ngene_set = {gene_set} # LIST\r\nGO_aspect = \"\"\"{GO_aspect}\"\"\"\r\npval_threshold = \"\"\"{pval_threshold}\"\"\"\r\nGO_aspect = 'GO:' + GO_aspect\r\npval_threshold = float(pval_threshold)\r\nimport requests\r\n\r\nr = requests.post(\r\n    url='https://biit.cs.ut.ee/gprofiler/api/gost/profile/',\r\n    json={\r\n        'organism':'hsapiens',\r\n        'query':gene_set,\r\n        'sources':[GO_aspect],#,\"GO:CC\",\"GO:BP\",\"KEGG\",\"REAC\",\"WP\",\"TF\",\"MIRNA\",\"HPA\",\"CORUM\",\"HP\"],\r\n        'user_threshold':pval_threshold, \r\n        'significance_threshold_method':'bonferroni'\r\n    }\r\n    )\r\ndata = r.json()['result']\r\n\r\n# result\r\nresult = data\r\n",
+      "templateVariables": {},
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "ANY",
+    "value": ":undef:"
+  },
+  "label": "PYTHONCODER-26",
+  "configuration": {
+    "force_run": "false",
+    "openai_api_key": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

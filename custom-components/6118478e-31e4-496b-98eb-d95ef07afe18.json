@@ -1,0 +1,33 @@
+{
+  "id": "6118478e-31e4-496b-98eb-d95ef07afe18",
+  "name": "custom11",
+  "className": "BarChart",
+  "description": "nanana",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Data",
+      "dataType": "JSON",
+      "value": ":undef:",
+      "templateVariables": {},
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "JSON",
+    "value": ":undef:"
+  },
+  "label": "BARCHART-0",
+  "configuration": {
+    "force_run": "false"
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

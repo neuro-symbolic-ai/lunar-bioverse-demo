@@ -1,0 +1,36 @@
+{
+  "id": "b9013d12-739a-4494-bd5d-01079a9cafeb",
+  "name": "Context_provider",
+  "className": "PythonCoder",
+  "description": "provide the context of the analysis as free text description",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Code",
+      "dataType": "CODE",
+      "value": "context = '''{context}'''\n\nresult = context",
+      "templateVariables": {
+        "Code.context": "We compared the frequency of alterations in the identified potential drivers in metastatic breast cancer with the primary breast cancer cohort. Some of the genes were more frequently mutated in ER+/HER2\u2212 metastatic lesions than in primary breast cancer. "
+      },
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "ANY",
+    "value": "We compared the frequency of alterations in the identified potential drivers in metastatic breast cancer with the primary breast cancer cohort. Some of the genes were more frequently mutated in ER+/HER2\u2212 metastatic lesions than in primary breast cancer. "
+  },
+  "label": "PYTHONCODER-18",
+  "configuration": {
+    "force_run": "false",
+    "openai_api_key": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

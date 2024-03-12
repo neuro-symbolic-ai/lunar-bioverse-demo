@@ -1,0 +1,34 @@
+{
+  "id": "894e10ff-1c04-4fdc-82e1-15d83691f78a",
+  "name": "Records to CSV",
+  "className": "PythonCoder",
+  "description": "Convert records (JSON) to CSV",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Code",
+      "dataType": "CODE",
+      "value": "import pandas as pd\n\nrecords = {records}\nresult = pd.DataFrame.from_dict(records).to_csv()",
+      "templateVariables": {},
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "ANY",
+    "value": ":undef:"
+  },
+  "label": "PYTHONCODER-2",
+  "configuration": {
+    "force_run": "false",
+    "openai_api_key": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

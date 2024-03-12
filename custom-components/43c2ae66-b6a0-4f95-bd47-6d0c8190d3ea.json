@@ -1,0 +1,37 @@
+{
+  "id": "43c2ae66-b6a0-4f95-bd47-6d0c8190d3ea",
+  "name": "ProteinAtlas_prompter",
+  "className": "PythonCoder",
+  "description": "prepares a prompt based on the output from ProteinAtlas_overlap",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Code",
+      "dataType": "CODE",
+      "value": "import pandas as pd\r\n# inputs\r\nprompt_instruction = '''{insrtuction}'''\r\ndata = {overlap_data}\r\n\r\n\r\n\r\n# calculations\r\ncols = ['name', 'overlaping_genes', 'n_overlaps', 'precision','recall','pvalue']\r\n#data = pd.DataFrame(data)\r\n#df_to_markdown = data[cols]\r\n\r\nmarkdown = ''\r\nfor col in cols:\r\n    markdown += col + ': ' + str(data[col]) + '\\n'\r\n\r\n\r\nSCoT_instructions = \"Description:\\nThe column 'name' refers to reference gene set from the Human Protein Atlas. \\nThe column 'overlaping_genes' contains genes that occur both in the analysed gene set and a reference set from Human Protein Atlas.\\nThe column 'recall' is a ratio between the intersection size and number of genes in the reference set.\\nThe column 'precision' is a ratio between the intersection size and number of genes in the analysed set.\\nThe column 'pvalue' is a Fisher's Test result and describes statistical signifance\"\r\n\r\n\r\n\r\n\r\n\r\nprompt = prompt_instruction + '\\n\\n' + markdown + SCoT_instructions\r\n\r\n# result\r\nresult = prompt",
+      "templateVariables": {
+        "Code.insrtuction": "Using the \"Description\" as a guideline, analyse the information below and provide a concise summary in the context of the comparison between a given set of genes and a reference set of genes.",
+        "Code.overlap_data": "{'name': 'Transcription factors', 'overlaping_genes': ['EBF1', 'MAF', 'NFATC2', 'PAX5', 'LYL1', 'BCL11B', 'PRDM1', 'TCF7', 'IKZF1', 'FLI1', 'FOXO1', 'IRF4', 'TFEB'], 'n_overlaps': 13, 'recall': 0.009, 'precision': 0.206, 'pvalue': 0.002510080200031496}"
+      },
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "ANY",
+    "value": "Using the \"Description\" as a guideline, analyse the information below and provide a concise summary in the context of the comparison between a given set of genes and a reference set of genes.\n\nname: Transcription factors\noverlaping_genes: ['EBF1', 'MAF', 'NFATC2', 'PAX5', 'LYL1', 'BCL11B', 'PRDM1', 'TCF7', 'IKZF1', 'FLI1', 'FOXO1', 'IRF4', 'TFEB']\nn_overlaps: 13\nprecision: 0.206\nrecall: 0.009\npvalue: 0.002510080200031496\nDescription:\nThe column 'name' refers to reference gene set from the Human Protein Atlas. \nThe column 'overlaping_genes' contains genes that occur both in the analysed gene set and a reference set from Human Protein Atlas.\nThe column 'recall' is a ratio between the intersection size and number of genes in the reference set.\nThe column 'precision' is a ratio between the intersection size and number of genes in the analysed set.\nThe column 'pvalue' is a Fisher's Test result and describes statistical signifance"
+  },
+  "label": "PYTHONCODER-3",
+  "configuration": {
+    "force_run": "false",
+    "openai_api_key": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

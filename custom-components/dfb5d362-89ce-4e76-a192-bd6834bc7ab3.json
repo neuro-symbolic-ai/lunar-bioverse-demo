@@ -1,0 +1,73 @@
+{
+  "id": "dfb5d362-89ce-4e76-a192-bd6834bc7ab3",
+  "name": "PubMed_search",
+  "className": "PythonCoder",
+  "description": "using biopython search for pubmed articles",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Code",
+      "dataType": "CODE",
+      "value": "import pandas as pd\r\nfrom Bio import Entrez\r\n\r\n# input\r\npubmedquery = \"\"\"{pubmed_query}\"\"\"\r\nmax_results = \"\"\"{max_results}\"\"\"\r\n\r\n# calculations\r\nmax_results = int(max_results)\r\nEntrez.email = \"your_email@example.com\"  # Always use your real email\r\n\r\nhandle = Entrez.esearch(db=\"pubmed\", term=pubmedquery, retmax=max_results)\r\nrecord = Entrez.read(handle)\r\nhandle.close()\r\n\r\n\r\n# Assuming you've already performed the search and have the 'record' object\r\nid_list = record['IdList']  # Extract the list of PubMed IDs\r\n\r\n# Fetch details of articles using the list of IDs\r\nhandle = Entrez.efetch(db=\"pubmed\", id=\",\".join(id_list), rettype=\"xml\")\r\narticles = Entrez.read(handle)\r\nhandle.close()\r\n\r\n\r\ndef fetch_details(id_list):\r\n    ids = ','.join(id_list)\r\n    handle = Entrez.efetch(db=\"pubmed\", id=ids, rettype=\"xml\")\r\n    articles = Entrez.read(handle)\r\n    handle.close()\r\n    return articles\r\n\r\n# Assuming 'id_list' contains the PubMed IDs obtained from the 'Entrez.esearch()' function\r\narticles = fetch_details(id_list)\r\n\r\n# Initialize lists to store article information\r\ntitles = []\r\nauthors_list = []\r\nabstracts = []\r\npub_dates = []\r\ndois = []\r\n\r\n# Extract information for each article\r\nfor article in articles['PubmedArticle']:\r\n    # Title\r\n    title = article['MedlineCitation']['Article']['ArticleTitle']\r\n    titles.append(title)\r\n    \r\n    # Authors\r\n    authors = article['MedlineCitation']['Article'].get('AuthorList', [])\r\n    authors_names = [f\"{author.get('ForeName', '')} {author.get('LastName', '')}\" for author in authors]\r\n    authors_list.append(\"; \".join(authors_names))\r\n    \r\n    # Abstract\r\n    abstract = article['MedlineCitation']['Article'].get('Abstract', {}).get('AbstractText', [])\r\n    abstract_text = \" \".join(abstract)\r\n    abstracts.append(abstract_text)\r\n    \r\n    # Publication Date\r\n    article_date = article['MedlineCitation']['Article'].get('ArticleDate')\r\n    if article_date:\r\n        pub_date = f\"{article_date[0]['Year']}-{article_date[0]['Month']}-{article_date[0]['Day']}\"\r\n    else:\r\n        pub_date = \"Not available\"\r\n    pub_dates.append(pub_date)\r\n    \r\n    # DOI\r\n    article_ids = article['PubmedData']['ArticleIdList']\r\n    doi = next((id for id in article_ids if id.attributes.get('IdType') == 'doi'), \"Not available\")\r\n    dois.append(doi)\r\n\r\n# Create a DataFrame\r\ndf = pd.DataFrame({\r\n    'Title': titles,\r\n    'Authors': authors_list,\r\n    'Abstract': abstracts,\r\n    'Publication Date': pub_dates,\r\n    'DOI': dois\r\n})\r\n\r\n# result\r\nresult = df.to_dict()",
+      "templateVariables": {
+        "Code.max_results": "5",
+        "Code.pubmed_query": "KRAS G12V AND breast cancer"
+      },
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "ANY",
+    "value": {
+      "Title": {
+        "0": "Mesonephric-like adenocarcinoma of the female genital tract: possible role of KRAS-targeted treatment-detailed molecular analysis of a case series and review of the literature for targetable somatic KRAS-mutations.",
+        "1": "PIK3CA is recurrently mutated in canine mammary tumors, similarly to in human mammary neoplasia.",
+        "2": "Validation and clinical application of a targeted next-generation sequencing gene panel for solid and hematologic malignancies.",
+        "3": "CDK4/6 Inhibitors Impair Recovery from Cytotoxic Chemotherapy in Pancreatic Adenocarcinoma.",
+        "4": "Mesonephric-like adenocarcinomas of the uterine corpus: report of a case series and review of the literature indicating poor prognosis for this subtype of endometrial adenocarcinoma."
+      },
+      "Authors": {
+        "0": "Christine E Brambs; Lars-Christian Horn; Ruth Hiller; Irene Kr\u00fccken; Christian Braun; Corina Christmann; Astrid Monecke; Anne Kathrin H\u00f6hn",
+        "1": "Maja Louise Arendt; Sharadha Sakthikumar; Malin Melin; Ingegerd Elvers; Patricio Rivera; Majbritt Larsen; Sara Saellstr\u00f6m; Frode Lingaas; Henrik R\u00f6nnberg; Kerstin Lindblad-Toh",
+        "2": "Iv\u00e1n Prieto-Potin; Nerea Carvajal; Jenifer Plaza-S\u00e1nchez; Rebeca Manso; Carmen Laura A\u00faz-Alexandre; Cristina Chamizo; Sandra Zazo; Almudena L\u00f3pez-S\u00e1nchez; Socorro Mar\u00eda Rodr\u00edguez-Pinilla; Laura Camacho; Raquel Longar\u00f3n; Beatriz Bellosillo; Rosa Somoza; Javier Hern\u00e1ndez-Losa; V\u00edctor Manuel Fern\u00e1ndez-Soria; Ricardo Ramos-Ruiz; Ion Crist\u00f3bal; Jes\u00fas Garc\u00eda-Foncillas; Federico Rojo",
+        "3": "Beatriz Salvador-Barbero; M\u00f3nica \u00c1lvarez-Fern\u00e1ndez; Elisabet Zapatero-Solana; Aicha El Bakkali; Mar\u00eda Del Camino Men\u00e9ndez; Pedro P L\u00f3pez-Casas; Tomas Di Domenico; Tao Xie; Todd VanArsdale; David J Shields; Manuel Hidalgo; Marcos Malumbres",
+        "4": "Lars-Christian Horn; Anne Kathrin H\u00f6hn; Irene Kr\u00fccken; Mathias Stiller; Ulrike Obeck; Christine E Brambs"
+      },
+      "Abstract": {
+        "0": "Mesonephric-like adenocarcinomas (MLA) of the female genital tract represent a rare and relatively recently described neoplasm exhibiting characteristic morphologic and immunohistochemical findings commonly associated with a KRAS-mutation. Most cases display an aggressive clinical behavior, but knowledge about treatment approaches is limited, especially for targeting KRAS. We report a series of eight cases with a detailed molecular analysis for KRAS. These cases as well as the data of previously published cases with detailed information regarding KRAS-mutational events were reviewed for a potential targeted approach and its prognostic impact. Both the uterine and ovarian MLA harbor a somatic KRAS-mutation in about 85% of the reported cases, affecting the hotspot codons 12 and 13. 15.7% of the endometrial and 15.6% of ovarian MLA are wild type for KRAS. A p.G12A-alteration was seen in 5.6% (5/89) of the endometrial and in 6.2% (2/32) of the ovarian tumors, for p.G12C in 7.9% and 6.2%, for p.G12D in 32.6% and 34.5% and for p.G12V in 36% and 37.5%, respectively. Very limited data are available regarding the prognostic impact of different mutational sites within the KRAS-gene without significant prognostic impact. Because of a specific p.G12C-KRAS somatic mutation, only the minority of MLA (7.9% with uterine and 6.2% with ovarian primary) are potentially targetable by sotarasib in that rare but aggressive subtype of adenocarcinoma of the female genital tract. Until now, the different location of a somatic KRAS-mutation is of no prognostic impact.",
+        "1": "Biological features of neoplastic disease affecting mammary gland tissue are shared between canines and humans. Research performed in either species has translational value and early phase clinical trials performed in canines with spontaneous disease could be informative for human trials. The purpose of this study was to investigate the somatic genetic aberrations occurring in canine mammary neoplasia by exome capture and next generation sequencing. Based on 55 tumor-normal pairs we identified the PIK3CA gene as the most commonly mutated gene in canine mammary tumors, with 25% of samples carrying mutations in this gene. A recurrent missense mutation was identified, p.H1047R, which is homologous to the human PIK3CA hotspot mutation found in different types of breast neoplasia. Mutations homologous to other known human mutation hotspots such as the PIK3CA p.E545K and the KRAS p.G12V/D were also identified. We identified copy number aberrations affecting important tumor suppressor and oncogenic pathways including deletions affecting the PTEN tumor suppressor gene. We suggest that activation of the KRAS or PIK3CA oncogenes or loss of the PTEN suppressor gene may be important for mammary tumor development in dogs. This data endorses the conservation of cancer across species and the validity of studying cancer in non-human species.",
+        "2": "Next-generation sequencing (NGS) is a high-throughput technology that has become widely integrated in molecular diagnostics laboratories. Among the large diversity of NGS-based panels, the Trusight Tumor 26 (TsT26) enables the detection of low-frequency variants across 26 genes using the MiSeq platform. We describe the inter-laboratory validation and subsequent clinical application of the panel in 399 patients presenting a range of tumor types, including gastrointestinal (GI, 29%), hematologic (18%), lung (13%), gynecological and breast (8% each), among others. The panel is highly accurate with a test sensitivity of 92%, and demonstrated high specificity and positive predictive values (95% and 96%, respectively). Sequencing testing was successful in two-thirds of patients, while the remaining third failed due to unsuccessful quality-control filtering. Most detected variants were observed in the <i>TP53</i> (28%), <i>KRAS</i> (16%), <i>APC</i> (10%) and <i>PIK3CA</i> (8%) genes. Overall, 372 variants were identified, primarily distributed as missense (81%), stop gain (9%) and frameshift (7%) altered sequences and mostly reported as pathogenic (78%) and variants of uncertain significance (19%). Only 14% of patients received targeted treatment based on the variant determined by the panel. The variants most frequently observed in GI and lung tumors were: <i>KRAS</i> c.35G\u00a0>\u00a0A (p.G12D), c.35G\u00a0>\u00a0T (p.G12V) and c.34G\u00a0>\u00a0T (p.G12C). Prior panel validation allowed its use in the laboratory daily practice by providing several relevant and potentially targetable variants across multiple tumors. However, this study is limited by high sample inadequacy rate, raising doubts as to continuity in the clinical setting.",
+        "3": "Inhibition of the cell-cycle kinases CDK4 and CDK6 is now part of the standard treatment in advanced breast cancer. CDK4/6 inhibitors, however, are not expected to cooperate with DNA-damaging or antimitotic chemotherapies as the former prevent cell-cycle entry, thus interfering with S-phase- or mitosis-targeting agents. Here, we report that sequential administration of CDK4/6 inhibitors after taxanes cooperates to prevent cellular proliferation in pancreatic ductal adenocarcinoma (PDAC) cells, patient-derived xenografts, and genetically engineered mice with Kras G12V and Cdkn2a-null mutations frequently observed in PDAC. This effect correlates with the repressive activity of CDK4/6 inhibitors on homologous recombination proteins required for the recovery from chromosomal damage. CDK4/6 inhibitors also prevent recovery from multiple DNA-damaging agents, suggesting broad applicability for their sequential administration after available chemotherapeutic agents.",
+        "4": "Endometrial mesonephric-like adenocarcinoma (ML-AC) represents a recently recognized subtype of endometrial adenocarcinoma (AC) associated with a subtle immunophenotype with a characteristic KRAS-mutation. Detailed clinico-pathologic analyses and prognostic data on ML-AC are limited. We report a series of four cases with histopathological, immunohistochemical, and molecular analyses. These cases as well as the data of previously published cases were reviewed for clinico-pathologic variables and clinical follow-up information. Forty cases of ML-AC were identified. ML-AC represents about 1% of all endometrial carcinomas. Similar to other types of endometrial AC, vaginal bleeding was the leading presenting symptom, and the mean age was 60.0\u00a0years (range 31-91). More than a half of the patients presented with locally advanced disease (\u2265\u2009FIGO stage II) at time of diagnosis, developed a recurrence or died of the disease within a mean follow-up period of 24.7\u00a0months (range 3-144.5\u00a0months). The most common site of distant disease was pulmonary involvement. Microscopically, ML-ACs present with mixed morphology and show a co-expression of so-called mesonephric and M\u00fcllerian markers, suggesting a M\u00fcllerian origin of the tumors. Immunostaining for PD-L1 was negative in all tested cases, using different antibodies against PD-L1. Retained staining for mismatch repair proteins on immunohistochemistry and a POLE-mutation suggest a copy number low phenotype within the molecular classification of endometrial carcinomas. Almost all cases showed a KRAS-mutation at codon 12 (mostly G12V). Uterine ML-AC represents a distinct subtype of invasive endometrial AC, associated with KRAS-mutations and characteristic immunohistochemical findings. Clinically, ML-AC may show an aggressive behavior with a high rate of recurrent disease and a substantial risk for distant metastatic disease, especially to the lungs."
+      },
+      "Publication Date": {
+        "0": "2023-09-05",
+        "1": "2023-01-12",
+        "2": "2020-10-06",
+        "3": "2020-02-27",
+        "4": "2020-01-11"
+      },
+      "DOI": {
+        "0": "10.1007/s00432-023-05306-9",
+        "1": "10.1038/s41598-023-27664-7",
+        "2": "10.7717/peerj.10069",
+        "3": "10.1016/j.ccell.2020.01.007",
+        "4": "10.1007/s00432-019-03123-7"
+      }
+    }
+  },
+  "label": "PYTHONCODER-9",
+  "configuration": {
+    "force_run": "false",
+    "openai_api_key": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

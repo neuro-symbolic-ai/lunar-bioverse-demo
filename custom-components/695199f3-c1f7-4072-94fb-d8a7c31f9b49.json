@@ -1,0 +1,39 @@
+{
+  "id": "695199f3-c1f7-4072-94fb-d8a7c31f9b49",
+  "name": "test1",
+  "className": "AzureOpenAIPrompt",
+  "description": "testing",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Prompt",
+      "dataType": "TEMPLATE",
+      "value": "/home/owysocki/ubuntu/lunarverse/workflows/8a9bbf2f-21bb-4b70-8fb5-1e66c637aad9/uploads/test.txt",
+      "templateVariables": {},
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "TEXT",
+    "value": "What is the file path for test.txt located within the lunarverse workflow directory on an Ubuntu system under the user 'owysocki'?\n\nAnswer: /home/owysocki/ubuntu/lunarverse/workflows/8a9bbf2f-21bb-4b70-8fb5-1e66c637aad9/uploads/test.txt"
+  },
+  "label": "AZUREOPENAIPROMPT-1",
+  "configuration": {
+    "force_run": "false",
+    "model_name": "text-davinci-003",
+    "openai_api_type": "azure",
+    "openai_api_version": "2023-05-15",
+    "deployment_name": "gpt-35-turbo",
+    "openai_api_key": "",
+    "openai_api_base": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}

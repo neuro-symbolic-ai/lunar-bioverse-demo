@@ -1,0 +1,1409 @@
+{
+  "id": "0c0b2835-ceaa-4aec-ac28-21868d5f585f",
+  "name": "gProfiler_pvalue_filter",
+  "className": "PythonCoder",
+  "description": "Filters the gProfiler enrichemnt results by a p_value threshold",
+  "group": "CUSTOM",
+  "inputs": [
+    {
+      "key": "Code",
+      "dataType": "CODE",
+      "value": "import pandas as pd\r\n\r\nenrichment_data = {enrichment_data}\r\npvalue_threshold = '''{pvalue_threshold}'''\r\n\r\n# filter by pvalue\r\npvalue_threshold = float(pvalue_threshold)\r\n\r\ndf = pd.DataFrame(enrichment_data)\r\n\r\ndf_f = df.loc[df['p_value'] < pvalue_threshold]\r\n\r\ndf_f = df_f.to_dict()\r\n\r\n# result\r\n\r\nresult = df_f\r\n\r\n",
+      "templateVariables": {
+        "Code.enrichment_data": "[{'description': '\"Binding to an enzyme, a protein with catalytic activity.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 3750, 'intersection_size': 27, 'intersections': [[], [], [], ['IPI'], [], ['IPI'], ['IPI'], [], [], [], ['IPI', 'IEA'], ['IEA'], [], [], [], [], ['IEA'], ['IPI'], ['IPI'], [], [], [], ['IPI'], [], [], [], ['IPI', 'ISS', 'IEA'], [], [], [], ['IDA'], ['IPI'], ['IPI', 'ISS', 'IEA'], ['IPI'], [], [], [], ['IPI'], [], [], [], ['IPI'], [], ['IEA'], [], ['IPI'], ['IPI', 'IEA'], ['ISS', 'IBA', 'IEA'], ['IPI'], [], ['IPI', 'IEA'], [], [], ['IPI'], ['IPI'], [], ['IPI', 'IEA'], ['IPI'], [], ['IPI'], []], 'name': 'enzyme binding', 'native': 'GO:0019899', 'p_value': 3.0405626920615267e-09, 'parents': ['GO:0005515'], 'precision': 0.4426229508196721, 'query': 'query_1', 'query_size': 61, 'recall': 0.013012048192771084, 'significant': True, 'source': 'GO:MF', 'term_size': 2075, 'source_order': 3750, 'group_id': 1}, {'description': '\"Binding to a kinase, any enzyme that catalyzes the transfer of a phosphate group.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 3751, 'intersection_size': 15, 'intersections': [[], [], [], [], [], [], ['IPI'], [], [], [], ['IEA'], [], [], [], [], [], [], [], ['IPI'], [], [], [], ['IPI'], [], [], [], [], [], [], [], ['IDA'], [], ['ISS', 'IEA'], ['IPI'], [], [], [], [], [], [], [], [], [], [], [], ['IPI'], ['IPI', 'IEA'], ['ISS', 'IBA', 'IEA'], ['IPI'], [], ['IEA'], [], [], ['IPI'], [], [], ['IEA'], [], [], ['IPI'], []], 'name': 'kinase binding', 'native': 'GO:0019900', 'p_value': 2.030677567354471e-06, 'parents': ['GO:0019899'], 'precision': 0.2459016393442623, 'query': 'query_1', 'query_size': 61, 'recall': 0.0195822454308094, 'significant': True, 'source': 'GO:MF', 'term_size': 766, 'source_order': 3751, 'group_id': 1}, {'description': '\"A compound molecular function in which an effector function is controlled by one or more regulatory components.\" [GOC:dos, GOC:pdt]', 'effective_domain_size': 20139, 'goshv': 8447, 'intersection_size': 19, 'intersections': [[], [], [], [], [], [], [], ['TAS', 'IEA'], ['IDA', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['TAS'], ['IDA', 'IBA', 'IEA'], ['IEA'], ['IEA'], [], [], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], ['IDA', 'TAS', 'NAS', 'IEA'], [], ['IBA', 'NAS', 'IEA'], [], [], ['IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IBA'], ['IBA'], [], [], [], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], ['IDA'], ['TAS'], [], [], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], [], ['TAS'], ['TAS', 'IEA'], [], []], 'name': 'molecular transducer activity', 'native': 'GO:0060089', 'p_value': 1.3995450034327116e-05, 'parents': ['GO:0003674'], 'precision': 0.3114754098360656, 'query': 'query_1', 'query_size': 61, 'recall': 0.012768817204301076, 'significant': True, 'source': 'GO:MF', 'term_size': 1488, 'source_order': 8447, 'group_id': 4}, {'description': '\"Receiving a signal and transmitting it in the cell to initiate a change in cell activity. A signal is a physical entity or change in state that is used to transfer information in order to trigger a response.\" [GOC:bf, GOC:signaling]', 'effective_domain_size': 20139, 'goshv': 5536, 'intersection_size': 19, 'intersections': [[], [], [], [], [], [], [], ['TAS', 'IEA'], ['IDA', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['TAS'], ['IDA', 'IBA', 'IEA'], ['IEA'], ['IEA'], [], [], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], ['IDA', 'TAS', 'NAS', 'IEA'], [], ['IBA', 'NAS', 'IEA'], [], [], ['IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IBA'], ['IBA'], [], [], [], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], ['IDA'], ['TAS'], [], [], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], [], ['TAS'], ['TAS', 'IEA'], [], []], 'name': 'signaling receptor activity', 'native': 'GO:0038023', 'p_value': 1.3995450034327116e-05, 'parents': ['GO:0060089'], 'precision': 0.3114754098360656, 'query': 'query_1', 'query_size': 61, 'recall': 0.012768817204301076, 'significant': True, 'source': 'GO:MF', 'term_size': 1488, 'source_order': 5536, 'group_id': 4}, {'description': '\"Binding to a protein kinase, any enzyme that catalyzes the transfer of a phosphate group, usually from ATP, to a protein substrate.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 3752, 'intersection_size': 13, 'intersections': [[], [], [], [], [], [], ['IPI'], [], [], [], ['IEA'], [], [], [], [], [], [], [], ['IPI'], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], ['ISS', 'IEA'], ['IPI'], [], [], [], [], [], [], [], [], [], [], [], ['IPI'], ['IPI', 'IEA'], ['ISS', 'IBA', 'IEA'], ['IPI'], [], ['IEA'], [], [], ['IPI'], [], [], [], [], [], ['IPI'], []], 'name': 'protein kinase binding', 'native': 'GO:0019901', 'p_value': 3.3719280443890245e-05, 'parents': ['GO:0019900'], 'precision': 0.21311475409836064, 'query': 'query_1', 'query_size': 61, 'recall': 0.01906158357771261, 'significant': True, 'source': 'GO:MF', 'term_size': 682, 'source_order': 3752, 'group_id': 1}, {'description': '\"Binding to an identical protein or proteins.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 5676, 'intersection_size': 22, 'intersections': [['IPI'], [], [], ['IPI'], [], ['IPI'], [], [], [], [], ['NAS'], ['TAS'], ['IDA'], ['IDA', 'IPI'], [], [], ['ISS', 'IEA'], [], [], [], [], [], ['IPI'], [], [], [], [], ['IPI'], [], [], ['IPI'], [], [], ['IPI'], [], ['IPI'], ['IPI'], [], [], [], ['IDA'], ['IPI'], [], [], ['IPI'], [], [], [], [], ['IDA', 'IPI'], [], [], [], ['IDA', 'IPI'], [], [], ['IPI'], [], [], ['IPI', 'IEA'], ['IPI']], 'name': 'identical protein binding', 'native': 'GO:0042802', 'p_value': 4.235632871019349e-05, 'parents': ['GO:0005515'], 'precision': 0.36065573770491804, 'query': 'query_1', 'query_size': 61, 'recall': 0.01026598226784881, 'significant': True, 'source': 'GO:MF', 'term_size': 2143, 'source_order': 5676, 'group_id': 1}, {'description': '\"Combining with an extracellular or intracellular signal and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity or state as part of signal transduction.\" [GOC:go_curators, Wikipedia:Transmembrane_receptor]', 'effective_domain_size': 20139, 'goshv': 1148, 'intersection_size': 17, 'intersections': [[], [], [], [], [], [], [], ['TAS', 'IEA'], ['IDA', 'ISS', 'IBA', 'TAS', 'IEA'], [], [], ['IDA', 'IBA', 'IEA'], ['IEA'], ['IEA'], [], [], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], ['IDA', 'TAS', 'NAS', 'IEA'], [], ['IBA', 'NAS', 'IEA'], [], [], ['IBA', 'IEA'], ['IDA', 'IBA'], ['IBA'], [], [], [], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], ['IDA'], ['TAS'], [], [], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], [], ['TAS'], [], [], []], 'name': 'transmembrane signaling receptor activity', 'native': 'GO:0004888', 'p_value': 4.5881691995323534e-05, 'parents': ['GO:0038023'], 'precision': 0.2786885245901639, 'query': 'query_1', 'query_size': 61, 'recall': 0.013364779874213837, 'significant': True, 'source': 'GO:MF', 'term_size': 1272, 'source_order': 1148, 'group_id': 4}, {'description': '\"Binding to a protein.\" [GOC:go_curators]', 'effective_domain_size': 20139, 'goshv': 1495, 'intersection_size': 60, 'intersections': [['IPI'], ['IPI'], ['IPI'], ['IPI', 'IEA'], ['IDA', 'IPI', 'IEA'], ['IPI', 'IBA', 'IEA'], ['IPI'], ['IPI'], ['IPI', 'IBA'], ['IPI'], ['IPI', 'NAS', 'IEA'], ['IDA', 'IPI', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IPI'], ['IDA', 'IPI'], [], ['IPI', 'IEA'], ['IDA', 'IPI', 'ISS', 'IBA', 'IEA'], ['IDA', 'IPI', 'IEA'], ['IPI'], ['IPI'], ['IPI'], ['IDA', 'IPI', 'IBA', 'IEA'], ['IDA', 'IPI', 'IEA'], ['IPI'], ['IPI'], ['IPI'], ['IDA', 'IPI', 'ISS', 'IEA'], ['IPI'], ['IPI', 'IEA'], ['IPI', 'IEA'], ['IDA', 'IPI', 'ISS', 'IBA', 'IEA'], ['IPI', 'IBA'], ['IPI', 'ISS', 'IEA'], ['IPI', 'IBA', 'IEA'], ['IPI', 'IEA'], ['IPI'], ['IDA', 'IPI', 'IBA', 'TAS', 'IEA'], ['EXP', 'IPI'], ['IPI'], ['IPI'], ['IDA', 'IPI', 'IBA', 'IEA'], ['IPI', 'IEA'], ['IPI'], ['IPI', 'IEA'], ['IPI'], ['IPI', 'IMP', 'IBA', 'IEA'], ['IDA', 'IPI', 'ISS', 'IEA'], ['IPI', 'ISS', 'IBA', 'IEA'], ['IPI'], ['IDA', 'IPI'], ['IPI', 'IMP', 'IBA', 'IEA'], ['IPI'], ['IDA', 'IPI'], ['IDA', 'IPI'], ['IPI', 'IEA'], ['IDA', 'IPI', 'IBA', 'IEA'], ['IDA', 'IPI', 'IBA', 'IEA'], ['IPI', 'IEA'], ['IPI'], ['IPI', 'IEA'], ['IPI']], 'name': 'protein binding', 'native': 'GO:0005515', 'p_value': 5.385192708691387e-05, 'parents': ['GO:0005488'], 'precision': 0.9836065573770492, 'query': 'query_1', 'query_size': 61, 'recall': 0.004051043143609479, 'significant': True, 'source': 'GO:MF', 'term_size': 14811, 'source_order': 1495, 'group_id': 1}, {'description': '\"Catalysis of the reaction: ATP + protein L-tyrosine = ADP + protein L-tyrosine phosphate by a non-membrane spanning protein.\" [EC:2.7.10.2]', 'effective_domain_size': 20139, 'goshv': 1006, 'intersection_size': 5, 'intersections': [[], [], [], ['IDA', 'IGI', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IBA', 'TAS', 'IEA'], ['IBA', 'IEA'], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA', 'IGI', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], []], 'name': 'non-membrane spanning protein tyrosine kinase activity', 'native': 'GO:0004715', 'p_value': 8.018666823425475e-05, 'parents': ['GO:0004713'], 'precision': 0.08196721311475409, 'query': 'query_1', 'query_size': 61, 'recall': 0.1111111111111111, 'significant': True, 'source': 'GO:MF', 'term_size': 45, 'source_order': 1006, 'group_id': 2}, {'description': '\"Catalysis of the reaction: ATP + a protein tyrosine = ADP + protein tyrosine phosphate.\" [RHEA:10596]', 'effective_domain_size': 20139, 'goshv': 1004, 'intersection_size': 7, 'intersections': [[], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'ISS', 'IBA', 'TAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'IMP', 'IGI', 'IBA', 'TAS', 'NAS', 'IEA'], [], [], [], [], [], [], [], [], [], []], 'name': 'protein tyrosine kinase activity', 'native': 'GO:0004713', 'p_value': 0.00010496118412255353, 'parents': ['GO:0004672'], 'precision': 0.11475409836065574, 'query': 'query_1', 'query_size': 61, 'recall': 0.0472972972972973, 'significant': True, 'source': 'GO:MF', 'term_size': 148, 'source_order': 1004, 'group_id': 2}, {'description': '\"Binding to a phospholipase.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 5776, 'intersection_size': 4, 'intersections': [[], [], [], ['IPI'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IPI'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IPI'], [], [], [], [], [], [], [], [], ['IPI'], []], 'name': 'phospholipase binding', 'native': 'GO:0043274', 'p_value': 0.00021576164886074928, 'parents': ['GO:0019899'], 'precision': 0.06557377049180328, 'query': 'query_1', 'query_size': 61, 'recall': 0.17391304347826086, 'significant': True, 'source': 'GO:MF', 'term_size': 23, 'source_order': 5776, 'group_id': 1}, {'description': '\"Modulates the activity of a kinase, an enzyme which catalyzes of the transfer of a phosphate group, usually from ATP, to a substrate molecule.\" [GOC:ai]', 'effective_domain_size': 20139, 'goshv': 3675, 'intersection_size': 8, 'intersections': [[], [], [], [], [], [], ['IDA', 'IBA', 'TAS'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['ISS', 'IEA'], [], [], [], ['IDA'], [], [], [], [], [], [], [], [], ['IMP', 'IEA'], [], [], ['ISS', 'IBA', 'TAS', 'IEA'], ['TAS'], [], [], [], ['IMP', 'IBA', 'IEA'], [], ['IEA'], [], [], [], [], []], 'name': 'kinase regulator activity', 'native': 'GO:0019207', 'p_value': 0.0004735198570059394, 'parents': ['GO:0030234'], 'precision': 0.13114754098360656, 'query': 'query_1', 'query_size': 61, 'recall': 0.029850746268656716, 'significant': True, 'source': 'GO:MF', 'term_size': 268, 'source_order': 3675, 'group_id': 5}, {'description': '\"Binding to a cytokine, any of a group of proteins that function to control the survival, growth and differentiation of tissues and cells, and which have autocrine and paracrine activity.\" [GOC:ai, GOC:bf, ISBN:0198599471]', 'effective_domain_size': 20139, 'goshv': 3762, 'intersection_size': 6, 'intersections': [[], [], [], [], [], [], [], [], ['IPI', 'IBA'], [], [], ['IPI', 'IBA', 'IEA'], [], [], [], [], ['IDA', 'ISS', 'IEA'], ['IPI', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA', 'IPI', 'IBA', 'IEA'], [], ['IPI'], [], [], []], 'name': 'cytokine binding', 'native': 'GO:0019955', 'p_value': 0.0010651340739780365, 'parents': ['GO:0005515'], 'precision': 0.09836065573770492, 'query': 'query_1', 'query_size': 61, 'recall': 0.04477611940298507, 'significant': True, 'source': 'GO:MF', 'term_size': 134, 'source_order': 3762, 'group_id': 1}, {'description': '\"Receiving a signal and transmitting it in a cell to initiate an immune response.\" [PMID:31415752, Wikipedia:Immune_receptor]', 'effective_domain_size': 20139, 'goshv': 10570, 'intersection_size': 6, 'intersections': [[], [], [], [], [], [], [], ['TAS', 'IEA'], ['IDA', 'ISS', 'IBA', 'IEA'], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], ['IDA', 'NAS', 'IEA'], [], [], [], [], [], ['IDA'], [], [], [], [], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []], 'name': 'immune receptor activity', 'native': 'GO:0140375', 'p_value': 0.0014303755814050133, 'parents': ['GO:0038023'], 'precision': 0.09836065573770492, 'query': 'query_1', 'query_size': 61, 'recall': 0.0425531914893617, 'significant': True, 'source': 'GO:MF', 'term_size': 141, 'source_order': 10570, 'group_id': 4}, {'description': '\"Binding to a SH2 domain (Src homology 2) of a protein, a protein domain of about 100 amino-acid residues and belonging to the alpha + beta domain class.\" [GOC:go_curators, Pfam:PF00017]', 'effective_domain_size': 20139, 'goshv': 5610, 'intersection_size': 4, 'intersections': [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IPI'], [], [], ['IPI'], [], [], [], [], [], [], [], [], [], [], [], ['IEA'], [], [], [], [], ['IEA'], [], [], [], [], [], [], [], [], [], []], 'name': 'SH2 domain binding', 'native': 'GO:0042169', 'p_value': 0.002142739965915514, 'parents': ['GO:0019904'], 'precision': 0.06557377049180328, 'query': 'query_1', 'query_size': 61, 'recall': 0.1, 'significant': True, 'source': 'GO:MF', 'term_size': 40, 'source_order': 5610, 'group_id': 1}, {'description': '\"Catalysis of the phosphorylation of an amino acid residue in a protein, usually according to the reaction: a protein + ATP = a phosphoprotein + ADP.\" [PMID:25399640]', 'effective_domain_size': 20139, 'goshv': 976, 'intersection_size': 10, 'intersections': [[], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], ['IEA'], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'IEA'], ['EXP', 'IDA', 'IMP', 'IGI', 'IBA', 'TAS', 'NAS', 'IEA'], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], [], [], [], [], []], 'name': 'protein kinase activity', 'native': 'GO:0004672', 'p_value': 0.0030972548422003965, 'parents': ['GO:0016301', 'GO:0016773', 'GO:0140096'], 'precision': 0.16393442622950818, 'query': 'query_1', 'query_size': 61, 'recall': 0.017123287671232876, 'significant': True, 'source': 'GO:MF', 'term_size': 584, 'source_order': 976, 'group_id': 2}, {'description': '\"A molecular function that controls the rate, timing and/or magnitude of gene transcription. The function of transcriptional regulators is to modulate gene expression at the transcription step so that they are expressed in the right cell at the right time and in the right amount throughout the life of the cell and the organism. Genes are transcriptional units, and include bacterial operons.\" [GOC:pg, GOC:txnOH-2018, Wikipedia:Transcription_factor]', 'effective_domain_size': 20139, 'goshv': 10515, 'intersection_size': 17, 'intersections': [[], ['IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['TAS'], [], [], [], [], ['ISA', 'IBA', 'IEA'], [], [], [], [], ['ISA', 'IBA', 'TAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'ISA', 'IBA', 'IEA'], ['IBA', 'IEA'], [], ['IDA', 'ISS', 'ISA', 'IBA', 'IEA'], [], [], ['IDA', 'IPI', 'IEA'], [], ['ISA', 'IBA', 'IEA'], ['ISA', 'IBA', 'IEA'], [], ['ISA', 'IBA', 'TAS', 'IEA'], ['ISA', 'IBA', 'IEA'], [], [], ['IDA'], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], ['ISS', 'IBA'], [], ['IDA', 'ISA', 'IBA', 'NAS'], [], [], [], [], [], []], 'name': 'transcription regulator activity', 'native': 'GO:0140110', 'p_value': 0.003530177901440724, 'parents': ['GO:0003674'], 'precision': 0.2786885245901639, 'query': 'query_1', 'query_size': 61, 'recall': 0.00975889781859931, 'significant': True, 'source': 'GO:MF', 'term_size': 1742, 'source_order': 10515, 'group_id': 6}, {'description': '\"Combining with a cytokine and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity.\" [GOC:add, GOC:mah]', 'effective_domain_size': 20139, 'goshv': 1151, 'intersection_size': 5, 'intersections': [[], [], [], [], [], [], [], ['TAS', 'IEA'], ['IDA', 'ISS', 'IBA', 'IEA'], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], ['IDA', 'NAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []], 'name': 'cytokine receptor activity', 'native': 'GO:0004896', 'p_value': 0.003942147615686905, 'parents': ['GO:0004888', 'GO:0140375'], 'precision': 0.08196721311475409, 'query': 'query_1', 'query_size': 61, 'recall': 0.05102040816326531, 'significant': True, 'source': 'GO:MF', 'term_size': 98, 'source_order': 1151, 'group_id': 4}, {'description': '\"Binding to a specific sequence of DNA that is part of a regulatory region that controls transcription of that section of the DNA. The transcribed region might be described as a gene, cistron, or operon.\" [GOC:txnOH]', 'effective_domain_size': 20139, 'goshv': 115, 'intersection_size': 15, 'intersections': [[], ['IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], ['IBA'], [], [], [], [], ['IDA', 'IEA'], ['IBA', 'IEA'], ['IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], ['IEA'], [], ['IBA'], ['IBA'], [], ['IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IDA', 'IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], []], 'name': 'transcription cis-regulatory region binding', 'native': 'GO:0000976', 'p_value': 0.004122947126361234, 'parents': ['GO:0001067', 'GO:1990837'], 'precision': 0.2459016393442623, 'query': 'query_1', 'query_size': 61, 'recall': 0.010783608914450037, 'significant': True, 'source': 'GO:MF', 'term_size': 1391, 'source_order': 115, 'group_id': 3}, {'description': '\"Binding to a nucleic acid region that regulates a nucleic acid-based process. Such processes include transcription, DNA replication, and DNA repair.\" [GOC:txnOH]', 'effective_domain_size': 20139, 'goshv': 151, 'intersection_size': 15, 'intersections': [[], ['IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], ['IBA'], [], [], [], [], ['IDA', 'IEA'], ['IBA', 'IEA'], ['IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], ['IEA'], [], ['IBA'], ['IBA'], [], ['IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IDA', 'IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], []], 'name': 'transcription regulatory region nucleic acid binding', 'native': 'GO:0001067', 'p_value': 0.00419424888734319, 'parents': ['GO:0003676'], 'precision': 0.2459016393442623, 'query': 'query_1', 'query_size': 61, 'recall': 0.010768126346015794, 'significant': True, 'source': 'GO:MF', 'term_size': 1393, 'source_order': 151, 'group_id': 3}, {'description': '\"Binding to a cytokine receptor.\" [GOC:mah, GOC:vw]', 'effective_domain_size': 20139, 'goshv': 1297, 'intersection_size': 7, 'intersections': [[], [], [], [], [], ['IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['ISS', 'IBA', 'IEA'], ['IBA'], [], [], [], [], ['TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], ['ISS', 'IEA'], [], [], ['IPI'], [], [], [], [], ['IDA', 'IPI', 'IBA'], [], [], [], [], []], 'name': 'cytokine receptor binding', 'native': 'GO:0005126', 'p_value': 0.0063667564910265895, 'parents': ['GO:0005102'], 'precision': 0.11475409836065574, 'query': 'query_1', 'query_size': 61, 'recall': 0.025454545454545455, 'significant': True, 'source': 'GO:MF', 'term_size': 275, 'source_order': 1297, 'group_id': 7}, {'description': '\"Catalysis of the transfer of a phosphate group, usually from ATP, to a substrate molecule.\" [ISBN:0198506732]', 'effective_domain_size': 20139, 'goshv': 2774, 'intersection_size': 11, 'intersections': [[], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'TAS', 'IEA'], ['NAS'], [], [], [], [], [], [], [], [], [], [], ['IEA'], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'IEA'], ['EXP', 'IDA', 'IMP', 'IGI', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], [], [], [], [], []], 'name': 'kinase activity', 'native': 'GO:0016301', 'p_value': 0.007336948917436302, 'parents': ['GO:0016772'], 'precision': 0.18032786885245902, 'query': 'query_1', 'query_size': 61, 'recall': 0.013924050632911392, 'significant': True, 'source': 'GO:MF', 'term_size': 790, 'source_order': 2774, 'group_id': 2}, {'description': '\"Binding to double-stranded DNA of a specific nucleotide composition, e.g. GC-rich DNA binding, or with a specific sequence motif or type of DNA, e.g. promotor binding or rDNA binding.\" [GOC:dos, GOC:sl]', 'effective_domain_size': 20139, 'goshv': 11191, 'intersection_size': 15, 'intersections': [[], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], ['IBA'], [], [], [], [], ['IDA', 'IEA'], ['IBA', 'IEA'], ['IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], ['IEA'], [], ['IBA'], ['IDA', 'IBA'], [], ['IDA', 'IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IDA', 'IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], []], 'name': 'sequence-specific double-stranded DNA binding', 'native': 'GO:1990837', 'p_value': 0.007680274786361835, 'parents': ['GO:0003690', 'GO:0043565'], 'precision': 0.2459016393442623, 'query': 'query_1', 'query_size': 61, 'recall': 0.010231923601637109, 'significant': True, 'source': 'GO:MF', 'term_size': 1466, 'source_order': 11191, 'group_id': 3}, {'description': '\"Binding to a phosphatase.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 3753, 'intersection_size': 6, 'intersections': [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IEA'], [], [], [], [], [], [], [], [], [], ['ISS', 'IEA'], [], [], [], [], ['IPI'], [], ['IPI'], [], [], [], ['IPI'], [], [], [], [], [], [], [], [], [], [], [], [], ['IEA'], [], [], [], [], [], [], [], [], [], []], 'name': 'phosphatase binding', 'native': 'GO:0019902', 'p_value': 0.007852775682914448, 'parents': ['GO:0019899'], 'precision': 0.09836065573770492, 'query': 'query_1', 'query_size': 61, 'recall': 0.031578947368421054, 'significant': True, 'source': 'GO:MF', 'term_size': 190, 'source_order': 3753, 'group_id': 1}, {'description': '\"Binding to a specific sequence of DNA that is part of a regulatory region that controls the transcription of a gene or cistron by RNA polymerase II.\" [GOC:txnOH]', 'effective_domain_size': 20139, 'goshv': 116, 'intersection_size': 14, 'intersections': [[], ['IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IBA'], [], [], [], [], ['IEA'], ['IBA', 'IEA'], ['IBA'], [], ['IDA', 'IBA'], [], [], ['IEA'], [], ['IBA'], ['IBA'], [], ['IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IBA'], [], ['IBA', 'IEA'], [], [], [], [], [], []], 'name': 'RNA polymerase II transcription regulatory region sequence-specific DNA binding', 'native': 'GO:0000977', 'p_value': 0.008186819857092718, 'parents': ['GO:0000976'], 'precision': 0.22950819672131148, 'query': 'query_1', 'query_size': 61, 'recall': 0.01082753286929621, 'significant': True, 'source': 'GO:MF', 'term_size': 1293, 'source_order': 116, 'group_id': 3}, {'description': '\"Binding to a specific upstream regulatory DNA sequence (transcription factor recognition sequence or binding site) located in cis relative to the transcription start site (i.e., on the same strand of DNA) of a gene transcribed by RNA polymerase II.\" [GOC:txnOH-2018]', 'effective_domain_size': 20139, 'goshv': 117, 'intersection_size': 13, 'intersections': [[], ['IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IBA'], [], [], [], [], ['IEA'], ['IBA', 'IEA'], ['IBA'], [], ['IDA', 'IBA'], [], [], [], [], ['IBA'], ['IBA'], [], ['IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA'], [], [], [], [], [], [], [], [], ['IBA'], [], ['IBA', 'IEA'], [], [], [], [], [], []], 'name': 'RNA polymerase II cis-regulatory region sequence-specific DNA binding', 'native': 'GO:0000978', 'p_value': 0.011828100415013382, 'parents': ['GO:0000977', 'GO:0000987'], 'precision': 0.21311475409836064, 'query': 'query_1', 'query_size': 61, 'recall': 0.011206896551724138, 'significant': True, 'source': 'GO:MF', 'term_size': 1160, 'source_order': 117, 'group_id': 3}, {'description': '\"Catalytic activity that acts to modify a protein.\" [GOC:molecular_function_refactoring, GOC:pdt]', 'effective_domain_size': 20139, 'goshv': 10506, 'intersection_size': 19, 'intersections': [[], [], ['EXP', 'IDA', 'IBA', 'TAS'], ['EXP', 'IDA', 'IGI', 'IBA', 'TAS', 'IEA'], [], ['IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], ['IEA'], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['EXP', 'IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], ['IEA'], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], ['EXP', 'IBA'], [], [], [], ['IDA', 'IMP', 'IBA', 'TAS', 'IEA'], ['IDA', 'ISS', 'TAS', 'IEA'], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'IEA'], ['EXP', 'IDA', 'IMP', 'IGI', 'IBA', 'TAS', 'NAS', 'IEA'], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], []], 'name': 'catalytic activity, acting on a protein', 'native': 'GO:0140096', 'p_value': 0.012109860037450227, 'parents': ['GO:0003824'], 'precision': 0.3114754098360656, 'query': 'query_1', 'query_size': 61, 'recall': 0.008147512864493996, 'significant': True, 'source': 'GO:MF', 'term_size': 2332, 'source_order': 10506, 'group_id': 2}, {'description': '\"Catalysis of the transfer of a phosphorus-containing group from one compound (donor) to an alcohol group (acceptor).\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 2980, 'intersection_size': 10, 'intersections': [[], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], ['IEA'], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'IEA'], ['EXP', 'IDA', 'IMP', 'IGI', 'IBA', 'TAS', 'NAS', 'IEA'], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], [], [], [], [], []], 'name': 'phosphotransferase activity, alcohol group as acceptor', 'native': 'GO:0016773', 'p_value': 0.013449594897108307, 'parents': ['GO:0016772'], 'precision': 0.16393442622950818, 'query': 'query_1', 'query_size': 61, 'recall': 0.01443001443001443, 'significant': True, 'source': 'GO:MF', 'term_size': 693, 'source_order': 2980, 'group_id': 2}, {'description': '\"Binding to a specific upstream regulatory DNA sequence (transcription factor recognition sequence or binding site) located in cis relative to the transcription start site (i.e., on the same strand of DNA) of a gene transcribed by some RNA polymerase. The proximal promoter is in cis with and relatively close to the core promoter.\" [GOC:txnOH-2018]', 'effective_domain_size': 20139, 'goshv': 120, 'intersection_size': 13, 'intersections': [[], ['IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IBA'], [], [], [], [], ['IEA'], ['IBA', 'IEA'], ['IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], ['IBA'], ['IBA'], [], ['IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA'], [], [], [], [], [], [], [], [], ['IBA'], [], ['IBA', 'IEA'], [], [], [], [], [], []], 'name': 'cis-regulatory region sequence-specific DNA binding', 'native': 'GO:0000987', 'p_value': 0.014247243866812288, 'parents': ['GO:0000976'], 'precision': 0.21311475409836064, 'query': 'query_1', 'query_size': 61, 'recall': 0.01100762066045724, 'significant': True, 'source': 'GO:MF', 'term_size': 1181, 'source_order': 120, 'group_id': 3}, {'description': '\"Binding to double-stranded DNA.\" [GOC:elh, GOC:vw]', 'effective_domain_size': 20139, 'goshv': 332, 'intersection_size': 15, 'intersections': [[], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], ['IBA'], [], [], [], [], ['IDA', 'IEA'], ['IBA', 'IEA'], ['IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], ['IEA'], [], ['IBA'], ['IDA', 'IBA'], [], ['IDA', 'IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IDA', 'IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], []], 'name': 'double-stranded DNA binding', 'native': 'GO:0003690', 'p_value': 0.016069074384502537, 'parents': ['GO:0003677'], 'precision': 0.2459016393442623, 'query': 'query_1', 'query_size': 61, 'recall': 0.009603072983354673, 'significant': True, 'source': 'GO:MF', 'term_size': 1562, 'source_order': 332, 'group_id': 3}, {'description': '\"Binding to DNA of a specific nucleotide composition, e.g. GC-rich DNA binding, or with a specific sequence motif or type of DNA e.g. promotor binding or rDNA binding.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 5815, 'intersection_size': 15, 'intersections': [[], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], ['IBA'], [], [], [], [], ['IDA', 'IEA'], ['IDA', 'IBA', 'IEA'], ['IBA'], [], ['IDA', 'ISS', 'IBA', 'IEA'], [], [], ['IEA'], [], ['IBA'], ['IDA', 'IBA', 'IEA'], [], ['IDA', 'IBA', 'IEA'], ['IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IDA', 'IBA'], [], ['IDA', 'IBA', 'IEA'], [], [], [], [], [], []], 'name': 'sequence-specific DNA binding', 'native': 'GO:0043565', 'p_value': 0.018465593200936475, 'parents': ['GO:0003677'], 'precision': 0.2459016393442623, 'query': 'query_1', 'query_size': 61, 'recall': 0.009487666034155597, 'significant': True, 'source': 'GO:MF', 'term_size': 1581, 'source_order': 5815, 'group_id': 3}, {'description': '\"Binding to a domain within the same polypeptide.\" [GOC:jl]', 'effective_domain_size': 20139, 'goshv': 5816, 'intersection_size': 4, 'intersections': [[], [], [], [], ['IDA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], []], 'name': 'protein self-association', 'native': 'GO:0043621', 'p_value': 0.018982755761288335, 'parents': ['GO:0005515'], 'precision': 0.06557377049180328, 'query': 'query_1', 'query_size': 61, 'recall': 0.057971014492753624, 'significant': True, 'source': 'GO:MF', 'term_size': 69, 'source_order': 5816, 'group_id': 1}, {'description': '\"Combining with a chemoattractant and transmitting the signal across the membrane by activating an associated G-protein; promotes the exchange of GDP for GTP on the alpha subunit of a heterotrimeric G-protein complex.\" [GOC:bf, GOC:mah]', 'effective_domain_size': 20139, 'goshv': 223, 'intersection_size': 3, 'intersections': [[], [], [], [], [], [], [], ['TAS', 'IEA'], ['IDA', 'ISS', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IDA', 'NAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []], 'name': 'G protein-coupled chemoattractant receptor activity', 'native': 'GO:0001637', 'p_value': 0.021848758446509377, 'parents': ['GO:0004930'], 'precision': 0.04918032786885246, 'query': 'query_1', 'query_size': 61, 'recall': 0.11538461538461539, 'significant': True, 'source': 'GO:MF', 'term_size': 26, 'source_order': 223, 'group_id': 4}, {'description': '\"Combining with a chemokine, and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity. Chemokines are a family of small chemotactic cytokines; their name is derived from their ability to induce directed chemotaxis in nearby responsive cells. All chemokines possess a number of conserved cysteine residues involved in intramolecular disulfide bond formation. Some chemokines are considered pro-inflammatory and can be induced during an immune response to recruit cells of the immune system to a site of infection, while others are considered homeostatic and are involved in controlling the migration of cells during normal processes of tissue maintenance or development. Chemokines are found in all vertebrates, some viruses and some bacteria.\" [GOC:BHF, GOC:rl, GOC:signaling, IUPHAR_GPCR:1280, PMID:12183377, PMID:8662823, Wikipedia:Chemokine]', 'effective_domain_size': 20139, 'goshv': 1193, 'intersection_size': 3, 'intersections': [[], [], [], [], [], [], [], ['TAS', 'IEA'], ['IDA', 'ISS', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['IDA', 'NAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []], 'name': 'chemokine receptor activity', 'native': 'GO:0004950', 'p_value': 0.021848758446509377, 'parents': ['GO:0001637', 'GO:0004896'], 'precision': 0.04918032786885246, 'query': 'query_1', 'query_size': 61, 'recall': 0.11538461538461539, 'significant': True, 'source': 'GO:MF', 'term_size': 26, 'source_order': 1193, 'group_id': 4}, {'description': '\"Modulates the activity of a protein kinase, an enzyme which phosphorylates a protein.\" [GOC:ai]', 'effective_domain_size': 20139, 'goshv': 3747, 'intersection_size': 6, 'intersections': [[], [], [], [], [], [], ['IDA', 'IBA', 'TAS'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['ISS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], ['IMP', 'IEA'], [], [], ['TAS'], ['TAS'], [], [], [], ['IMP', 'IBA', 'IEA'], [], [], [], [], [], [], []], 'name': 'protein kinase regulator activity', 'native': 'GO:0019887', 'p_value': 0.02227514859468723, 'parents': ['GO:0019207'], 'precision': 0.09836065573770492, 'query': 'query_1', 'query_size': 61, 'recall': 0.026200873362445413, 'significant': True, 'source': 'GO:MF', 'term_size': 229, 'source_order': 3747, 'group_id': 5}, {'description': '\"A transcription regulator activity that modulates transcription of gene sets via selective and non-covalent binding to a specific double-stranded genomic DNA sequence (sometimes referred to as a motif) within a cis-regulatory region. Regulatory regions include promoters (proximal and distal) and enhancers. Genes are transcriptional units, and include bacterial operons.\" [GOC:txnOH-2018]', 'effective_domain_size': 20139, 'goshv': 338, 'intersection_size': 13, 'intersections': [[], ['IBA', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['ISA', 'IBA', 'IEA'], [], [], [], [], ['ISA', 'IBA', 'TAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'ISA', 'IBA', 'IEA'], ['IBA', 'IEA'], [], ['IDA', 'ISS', 'ISA', 'IBA', 'IEA'], [], [], [], [], ['ISA', 'IBA', 'IEA'], ['ISA', 'IBA', 'IEA'], [], ['ISA', 'IBA', 'TAS', 'IEA'], ['ISA', 'IBA', 'IEA'], [], [], [], [], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], ['ISS', 'IBA'], [], ['IDA', 'ISA', 'IBA', 'NAS'], [], [], [], [], [], []], 'name': 'DNA-binding transcription factor activity', 'native': 'GO:0003700', 'p_value': 0.02409713517178796, 'parents': ['GO:0140110'], 'precision': 0.21311475409836064, 'query': 'query_1', 'query_size': 61, 'recall': 0.010458567980691875, 'significant': True, 'source': 'GO:MF', 'term_size': 1243, 'source_order': 338, 'group_id': 6}, {'description': '\"Binds to and increases the activity of a kinase, an enzyme which catalyzes of the transfer of a phosphate group, usually from ATP, to a substrate molecule.\" [GOC:ai]', 'effective_domain_size': 20139, 'goshv': 3677, 'intersection_size': 5, 'intersections': [[], [], [], [], [], [], ['IDA', 'TAS'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IDA'], [], [], [], [], [], [], [], [], [], [], [], [], ['TAS'], [], [], [], ['IMP', 'IBA', 'IEA'], [], ['IEA'], [], [], [], [], []], 'name': 'kinase activator activity', 'native': 'GO:0019209', 'p_value': 0.025103235828809467, 'parents': ['GO:0008047', 'GO:0019207'], 'precision': 0.08196721311475409, 'query': 'query_1', 'query_size': 61, 'recall': 0.034722222222222224, 'significant': True, 'source': 'GO:MF', 'term_size': 144, 'source_order': 3677, 'group_id': 5}, {'description': '\"Binding to a specific domain of a protein.\" [GOC:go_curators]', 'effective_domain_size': 20139, 'goshv': 3755, 'intersection_size': 9, 'intersections': [[], [], [], [], ['IPI'], ['IPI', 'IBA'], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], ['IPI'], [], [], ['IPI'], [], [], ['IPI'], [], [], ['IPI', 'IEA'], [], [], [], [], [], [], [], [], ['IEA'], [], [], [], [], ['IEA'], [], [], [], [], [], [], [], [], ['IPI'], []], 'name': 'protein domain specific binding', 'native': 'GO:0019904', 'p_value': 0.04335559768894698, 'parents': ['GO:0005515'], 'precision': 0.14754098360655737, 'query': 'query_1', 'query_size': 61, 'recall': 0.013975155279503106, 'significant': True, 'source': 'GO:MF', 'term_size': 644, 'source_order': 3755, 'group_id': 1}, {'description': '\"Catalysis of the transfer of a phosphorus-containing group from one compound (donor) to another (acceptor).\" [GOC:jl, ISBN:0198506732]', 'effective_domain_size': 20139, 'goshv': 2979, 'intersection_size': 11, 'intersections': [[], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'TAS', 'IEA'], ['NAS'], [], [], [], [], [], [], [], [], [], [], ['IEA'], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'IEA'], ['EXP', 'IDA', 'IMP', 'IGI', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], [], [], [], [], []], 'name': 'transferase activity, transferring phosphorus-containing groups', 'native': 'GO:0016772', 'p_value': 0.04628001343194192, 'parents': ['GO:0016740'], 'precision': 0.18032786885245902, 'query': 'query_1', 'query_size': 61, 'recall': 0.011351909184726523, 'significant': True, 'source': 'GO:MF', 'term_size': 969, 'source_order': 2979, 'group_id': 2}, {'description': '\"Catalysis of the transfer of a group, e.g. a methyl group, glycosyl group, acyl group, phosphorus-containing, or other groups, from one compound (generally regarded as the donor) to another compound (generally regarded as the acceptor). Transferase is the systematic name for any enzyme of EC class 2.\" [ISBN:0198506732]', 'effective_domain_size': 20139, 'goshv': 2952, 'intersection_size': 18, 'intersections': [[], [], ['EXP', 'IDA', 'IBA', 'TAS', 'IEA'], ['EXP', 'IDA', 'IGI', 'IBA', 'TAS', 'IEA'], ['NAS'], [], [], [], [], [], [], [], [], [], ['IDA', 'IBA', 'TAS', 'IEA'], ['IEA'], ['IMP', 'ISS', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], [], [], [], [], [], [], [], ['EXP', 'IDA', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], ['EXP', 'IDA', 'IMP', 'ISS', 'IBA', 'TAS', 'IEA'], ['EXP', 'IDA', 'IMP', 'IBA', 'TAS', 'IEA'], [], [], [], [], [], [], ['IDA', 'IMP', 'IBA', 'IEA'], ['EXP', 'IBA', 'IEA'], [], ['IEA'], [], [], [], [], [], ['EXP', 'IDA', 'IGI', 'IBA', 'IEA'], ['EXP', 'IDA', 'IMP', 'IGI', 'ISS', 'IBA', 'TAS', 'NAS', 'IEA'], ['IDA', 'IBA', 'TAS', 'IEA'], [], [], [], ['IDA', 'IMP', 'IBA', 'IC', 'IEA'], ['IDA', 'IEA'], [], [], [], []], 'name': 'transferase activity', 'native': 'GO:0016740', 'p_value': 0.04764298663809994, 'parents': ['GO:0003824'], 'precision': 0.29508196721311475, 'query': 'query_1', 'query_size': 61, 'recall': 0.0076465590484282074, 'significant': True, 'source': 'GO:MF', 'term_size': 2354, 'source_order': 2952, 'group_id': 2}]",
+        "Code.pvalue_threshold": "0.0001"
+      },
+      "componentId": null
+    }
+  ],
+  "output": {
+    "dataType": "ANY",
+    "value": {
+      "description": {
+        "0": "\"Binding to an enzyme, a protein with catalytic activity.\" [GOC:jl]",
+        "1": "\"Binding to a kinase, any enzyme that catalyzes the transfer of a phosphate group.\" [GOC:jl]",
+        "2": "\"A compound molecular function in which an effector function is controlled by one or more regulatory components.\" [GOC:dos, GOC:pdt]",
+        "3": "\"Receiving a signal and transmitting it in the cell to initiate a change in cell activity. A signal is a physical entity or change in state that is used to transfer information in order to trigger a response.\" [GOC:bf, GOC:signaling]",
+        "4": "\"Binding to a protein kinase, any enzyme that catalyzes the transfer of a phosphate group, usually from ATP, to a protein substrate.\" [GOC:jl]",
+        "5": "\"Binding to an identical protein or proteins.\" [GOC:jl]",
+        "6": "\"Combining with an extracellular or intracellular signal and transmitting the signal from one side of the membrane to the other to initiate a change in cell activity or state as part of signal transduction.\" [GOC:go_curators, Wikipedia:Transmembrane_receptor]",
+        "7": "\"Binding to a protein.\" [GOC:go_curators]",
+        "8": "\"Catalysis of the reaction: ATP + protein L-tyrosine = ADP + protein L-tyrosine phosphate by a non-membrane spanning protein.\" [EC:2.7.10.2]"
+      },
+      "effective_domain_size": {
+        "0": 20139,
+        "1": 20139,
+        "2": 20139,
+        "3": 20139,
+        "4": 20139,
+        "5": 20139,
+        "6": 20139,
+        "7": 20139,
+        "8": 20139
+      },
+      "goshv": {
+        "0": 3750,
+        "1": 3751,
+        "2": 8447,
+        "3": 5536,
+        "4": 3752,
+        "5": 5676,
+        "6": 1148,
+        "7": 1495,
+        "8": 1006
+      },
+      "intersection_size": {
+        "0": 27,
+        "1": 15,
+        "2": 19,
+        "3": 19,
+        "4": 13,
+        "5": 22,
+        "6": 17,
+        "7": 60,
+        "8": 5
+      },
+      "intersections": {
+        "0": [
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IPI",
+            "ISS",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IDA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "ISS",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IEA"
+          ],
+          [],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "ISS",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IPI"
+          ],
+          []
+        ],
+        "1": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA"
+          ],
+          [],
+          [
+            "ISS",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "ISS",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          []
+        ],
+        "2": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "TAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "ISS",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [
+            "TAS"
+          ],
+          [
+            "IDA",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IEA"
+          ],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IMP",
+            "ISS",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "TAS",
+            "NAS",
+            "IEA"
+          ],
+          [],
+          [
+            "IBA",
+            "NAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IBA",
+            "TAS",
+            "NAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IBA"
+          ],
+          [
+            "IBA"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IMP",
+            "IBA",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA"
+          ],
+          [
+            "TAS"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IMP",
+            "IBA",
+            "IC",
+            "IEA"
+          ],
+          [],
+          [
+            "TAS"
+          ],
+          [
+            "TAS",
+            "IEA"
+          ],
+          [],
+          []
+        ],
+        "3": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "TAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "ISS",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [
+            "TAS"
+          ],
+          [
+            "IDA",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IEA"
+          ],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IMP",
+            "ISS",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "TAS",
+            "NAS",
+            "IEA"
+          ],
+          [],
+          [
+            "IBA",
+            "NAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IBA",
+            "TAS",
+            "NAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IBA"
+          ],
+          [
+            "IBA"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IMP",
+            "IBA",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA"
+          ],
+          [
+            "TAS"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IMP",
+            "IBA",
+            "IC",
+            "IEA"
+          ],
+          [],
+          [
+            "TAS"
+          ],
+          [
+            "TAS",
+            "IEA"
+          ],
+          [],
+          []
+        ],
+        "4": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA"
+          ],
+          [],
+          [
+            "ISS",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "ISS",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          []
+        ],
+        "5": [
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "NAS"
+          ],
+          [
+            "TAS"
+          ],
+          [
+            "IDA"
+          ],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "ISS",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IDA"
+          ],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "IPI"
+          ],
+          [],
+          [],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ]
+        ],
+        "6": [
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "TAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "ISS",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IDA",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IEA"
+          ],
+          [
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IMP",
+            "ISS",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "TAS",
+            "NAS",
+            "IEA"
+          ],
+          [],
+          [
+            "IBA",
+            "NAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IBA"
+          ],
+          [
+            "IBA"
+          ],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IMP",
+            "IBA",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA"
+          ],
+          [
+            "TAS"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IMP",
+            "IBA",
+            "IC",
+            "IEA"
+          ],
+          [],
+          [
+            "TAS"
+          ],
+          [],
+          [],
+          []
+        ],
+        "7": [
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IBA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "NAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "ISS",
+            "IBA",
+            "TAS",
+            "NAS",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "ISS",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "ISS",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "ISS",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "IBA"
+          ],
+          [
+            "IPI",
+            "ISS",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [
+            "EXP",
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IMP",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "ISS",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "ISS",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IMP",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [
+            "IDA",
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IDA",
+            "IPI",
+            "IBA",
+            "IEA"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ],
+          [
+            "IPI",
+            "IEA"
+          ],
+          [
+            "IPI"
+          ]
+        ],
+        "8": [
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IGI",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [
+            "IBA",
+            "IEA"
+          ],
+          [],
+          [
+            "IDA",
+            "IBA",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [
+            "IDA",
+            "IGI",
+            "IBA",
+            "TAS",
+            "IEA"
+          ],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          [],
+          []
+        ]
+      },
+      "name": {
+        "0": "enzyme binding",
+        "1": "kinase binding",
+        "2": "molecular transducer activity",
+        "3": "signaling receptor activity",
+        "4": "protein kinase binding",
+        "5": "identical protein binding",
+        "6": "transmembrane signaling receptor activity",
+        "7": "protein binding",
+        "8": "non-membrane spanning protein tyrosine kinase activity"
+      },
+      "native": {
+        "0": "GO:0019899",
+        "1": "GO:0019900",
+        "2": "GO:0060089",
+        "3": "GO:0038023",
+        "4": "GO:0019901",
+        "5": "GO:0042802",
+        "6": "GO:0004888",
+        "7": "GO:0005515",
+        "8": "GO:0004715"
+      },
+      "p_value": {
+        "0": 3.0405626920615267e-09,
+        "1": 2.030677567354471e-06,
+        "2": 1.3995450034327116e-05,
+        "3": 1.3995450034327116e-05,
+        "4": 3.3719280443890245e-05,
+        "5": 4.235632871019349e-05,
+        "6": 4.5881691995323534e-05,
+        "7": 5.385192708691387e-05,
+        "8": 8.018666823425475e-05
+      },
+      "parents": {
+        "0": [
+          "GO:0005515"
+        ],
+        "1": [
+          "GO:0019899"
+        ],
+        "2": [
+          "GO:0003674"
+        ],
+        "3": [
+          "GO:0060089"
+        ],
+        "4": [
+          "GO:0019900"
+        ],
+        "5": [
+          "GO:0005515"
+        ],
+        "6": [
+          "GO:0038023"
+        ],
+        "7": [
+          "GO:0005488"
+        ],
+        "8": [
+          "GO:0004713"
+        ]
+      },
+      "precision": {
+        "0": 0.4426229508196721,
+        "1": 0.2459016393442623,
+        "2": 0.3114754098360656,
+        "3": 0.3114754098360656,
+        "4": 0.21311475409836064,
+        "5": 0.36065573770491804,
+        "6": 0.2786885245901639,
+        "7": 0.9836065573770492,
+        "8": 0.08196721311475409
+      },
+      "query": {
+        "0": "query_1",
+        "1": "query_1",
+        "2": "query_1",
+        "3": "query_1",
+        "4": "query_1",
+        "5": "query_1",
+        "6": "query_1",
+        "7": "query_1",
+        "8": "query_1"
+      },
+      "query_size": {
+        "0": 61,
+        "1": 61,
+        "2": 61,
+        "3": 61,
+        "4": 61,
+        "5": 61,
+        "6": 61,
+        "7": 61,
+        "8": 61
+      },
+      "recall": {
+        "0": 0.013012048192771084,
+        "1": 0.0195822454308094,
+        "2": 0.012768817204301076,
+        "3": 0.012768817204301076,
+        "4": 0.01906158357771261,
+        "5": 0.01026598226784881,
+        "6": 0.013364779874213837,
+        "7": 0.004051043143609479,
+        "8": 0.1111111111111111
+      },
+      "significant": {
+        "0": true,
+        "1": true,
+        "2": true,
+        "3": true,
+        "4": true,
+        "5": true,
+        "6": true,
+        "7": true,
+        "8": true
+      },
+      "source": {
+        "0": "GO:MF",
+        "1": "GO:MF",
+        "2": "GO:MF",
+        "3": "GO:MF",
+        "4": "GO:MF",
+        "5": "GO:MF",
+        "6": "GO:MF",
+        "7": "GO:MF",
+        "8": "GO:MF"
+      },
+      "term_size": {
+        "0": 2075,
+        "1": 766,
+        "2": 1488,
+        "3": 1488,
+        "4": 682,
+        "5": 2143,
+        "6": 1272,
+        "7": 14811,
+        "8": 45
+      },
+      "source_order": {
+        "0": 3750,
+        "1": 3751,
+        "2": 8447,
+        "3": 5536,
+        "4": 3752,
+        "5": 5676,
+        "6": 1148,
+        "7": 1495,
+        "8": 1006
+      },
+      "group_id": {
+        "0": 1,
+        "1": 1,
+        "2": 4,
+        "3": 4,
+        "4": 1,
+        "5": 1,
+        "6": 4,
+        "7": 1,
+        "8": 2
+      }
+    }
+  },
+  "label": "PYTHONCODER-2",
+  "configuration": {
+    "force_run": "false",
+    "openai_api_key": ""
+  },
+  "version": null,
+  "isCustom": true,
+  "isTerminal": false,
+  "position": {
+    "x": 0,
+    "y": 0
+  },
+  "timeout": 60,
+  "forceRun": false
+}
