@@ -12,7 +12,7 @@ If you use this code or data in your research, please cite our paper as follows:
 
 Wysocki, Oskar, et al. "An LLM-based Knowledge Synthesis and Scientific Reasoning Framework for Biomedical Discovery." arXiv preprint arXiv:2406.18626 (2024).
 
-```bash
+```bibtex
 @article{wysocki2024llm,
   title={An LLM-based Knowledge Synthesis and Scientific Reasoning Framework for Biomedical Discovery},
   author={Wysocki, Oskar and Wysocka, Magdalena and Carvalho, Danilo and Bogatu, Alex Teodor and Gusicuma, Danilo Miranda and Delmas, Maxime and Unsworth, Harriet and Freitas, Andre},
