@@ -1,12 +1,12 @@
 # An LLM-based Knowledge Synthesis and Scientific Reasoning Framework for Biomedical Discovery
 
-Welcome to the GitHub repository for the code and data accompanying our research paper. This repository is designed to provide an easy-to-access and comprehensive resource for researchers, developers, and practitioners who wish to understand, reproduce, or build upon the work presented in our paper.
+Welcome to the GitHub repository for the code and data accompanying our research [paper](https://arxiv.org/pdf/2406.18626). This repository is designed to provide an easy-to-access and comprehensive resource for researchers, developers, and practitioners who wish to understand, reproduce, or build upon the work presented in our paper.
 
 **Abstract:**
 
 We present BioLunar, developed using the Lunar framework, as a tool for supporting biological analyses, with a particular emphasis on molecular-level evidence enrichment for biomarker discovery in oncology. The platform integrates Large Language Models (LLMs) to facilitate complex scientific reasoning across distributed evidence spaces, enhancing the capability for harmonizing and reasoning over heterogeneous data sources. Demonstrating its utility in cancer research, BioLunar leverages modular design, reusable data access and data analysis components, and a low-code user interface, enabling researchers of all programming levels to construct LLM-enabled scientific workflows. By facilitating automatic scientific discovery and inference from heterogeneous evidence, BioLunar exemplifies the potential of the integration between LLMs, specialised databases and biomedical tools to support expert-level knowledge synthesis and discovery.
 
-## Citation
+**Citation**
 
 If you use this code or data in your research, please cite our paper as follows:
 
