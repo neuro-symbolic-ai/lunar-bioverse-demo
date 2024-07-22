@@ -1,5 +1,4 @@
 # lunar-bioverse-demo
-# Research Paper Code Repository
 
 Welcome to the GitHub repository for the code and data accompanying our research paper. This repository is designed to provide an easy-to-access and comprehensive resource for researchers, developers, and practitioners who wish to understand, reproduce, or build upon the work presented in our paper.
 
